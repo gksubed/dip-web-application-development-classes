@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (date) params.push(`date=${date}`);
     if (thumbs) params.push(`thumbs=${thumbs}`);
 
+    if (params.lemgth > 0){
+      apiurl +=
+    },
+
     // Challenge 1
     // 1. check all the form fields to see which fields have data
     // 2. add them to the apiURL as parameters

@@ -11,21 +11,78 @@
       const root = ReactDOM.createRoot(domNode);
       root.render(<App />);
 
-      function ItemList({ items }) {
+      function Address(props) {
+        const {address} = props;
+        return (
+          <dl className="address">
+            <dt>Street</dt>
+            <dd>{address.street}</dd>
+            <dt>City</dt>
+            <dd>{address.city}</dd>
+            <dt>Post code</dt>
+            <dd>{address.zipCode}</dd>
+          </dl>
+        );
+      }
+
+      function User(props) {
+        const {user} = props;
+        return (
+          <div key={user.id} className="card">
+             <section className="card-content">
+              <p>{user.firstName}</p>
+              <p>{user.lastName}</p>
+              <p>{user.age}</p>
+              <Address address={user.address} />
+            </section>
+          </div>
+        );
+      }
+
+      function UserList({ users }) {
         //template
+        return (
+          <>
+            
+            {users.map((user) => (<User user={user} />))}
+            
+            </>
+        )
       }
 
       // Usage example
       function App() {
-        const items = [
-          { id: 1, title: "First Item" },
-          { id: 2, title: "Second Item" },
-          { id: 3, title: "Third Item" },
-        ];
+        const users = [
+        {
+        id: 1,
+        firstName: "John",
+        lastName: "Doe",
+        age: 30,
+        isStudent: false,
+        address: {
+          street: "123 Main St",
+          city: "Perth",
+          zipCode: "6000",
+        },
+        skills: ["JavaScript", "HTML", "CSS"],
+        socialProfiles: {
+          twitter: "@johndoe",
+          linkedIn: "linkedin.com/in/johndoe",
+        },
+        isEmployed: true,
+      }
+    ];
+        // const items = [
+        //   { id: 1, title: "First Item" },
+        //   { id: 2, title: "Second Item" },
+        //   { id: 3, title: "Third Item" },
+        // ];
 
         // Your code goes here to return JSX
         // Hint: you will need to loop through these items
         // render
+        //  return <ItemList items={items} />;
+        return <UserList users={users} />;
       }
     </script>
   </body>

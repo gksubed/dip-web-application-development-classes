@@ -17,7 +17,8 @@
       <div class="field">
         <label class="label">Date (YYYY-MM-DD)</label>
         <div class="control">
-          <input class="input" type="date" />
+          <!-- <input class="input" type="date" /> -->
+           <div id="react-date-input"></div>div>
         </div>
       </div>
       <div class="field">
@@ -52,5 +53,41 @@
     </form>
 
     <div id="apod-content"></div>
+    <script type="text/babel">
+      const inputStyle = {
+        margin: "5px",
+        padding: "8px",
+        border: "1px solid #ccc",
+        borderradius: "4px",
+      };
+
+
+    function DateInputComponent ({newDate = "", onDateChange}){
+      var newDate= " ";
+      debugger;
+      const handleChange  = (event) => {
+        //debugger
+        onDateChange(event.traget.value);
+      };
+      return (
+        <input
+          className= "input"
+          type= "date"
+          style={inputStyle}
+          onChange={handleChange}
+        />
+      );
+    }
+    //parent
+    function App(){
+      const [date, setDate] = React.useState("");
+
+      return <DateInputComponent newDate={date} onDateChange= {setDate} />;
+    }
+    const root = ReactDOM.createRoot(
+      document.getElementById("react-date-input"),
+    );
+    root.render(<App />);
+    </script>
   </body>
 </html>

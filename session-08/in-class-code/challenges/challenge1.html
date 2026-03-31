@@ -74,8 +74,49 @@
         // Iterate over the user list and print out first name, last name, age and skills of each user
         return (
           // Dont foget to wrap you list in the <ul> or <ol>tag
-        );
-      }
+            //       <ul>
+            //         {userList.map((user, index) => (
+            //         <li key={index}>
+            //           <section>
+            //           <p>Name: {user.firstName} {user.lastName}
+            //           </p>
+            //            </section>          
+            //           </li>
+            //   ))}
+            //         </ul>
+            //   );
+            // }
+
+
+      <ul>
+
+        <User { ...users[0] } />
+         <User { ...users[1] } />
+
+
+                    {userList.map((user, index) => (
+                    <li key={index}>
+                      <section>
+                      Name: {user.firstName} {user.lastName}
+                      </section> {" "}
+
+                        <section>
+                          Skills:{" "}
+                          {user.skills.map((skill)=>(
+                            <p key={skill}>{skill}</p>
+
+                            ))}{" "}
+                        </section>
+                        <section>Skills: user.skills.join(", ")}</section>
+                        
+                      </li>
+              ))}
+                    </ul>
+              );
+            }
+
+
+
       // Correct usage of ReactDOM.createRoot
       const domNode = document.getElementById("app");
       const root = ReactDOM.createRoot(domNode); // Initialise the root.
