@@ -3,6 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./assets/css/style.css";
 import App from "./App.js";
+import "bulma/css/bulma.min.css";
+
 // 2) Get a reference to the div with ID root
 const element = document.getElementById("root");
 
@@ -14,3 +16,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// root.render(<App />);
